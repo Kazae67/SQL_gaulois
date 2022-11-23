@@ -7,6 +7,9 @@ ORDER BY SUM(id_lieu) DESC
 
 [2] Nom des gaulois + spécialité + village
 
-SELECT nom_personnage, nom_lieu
+SELECT nom_personnage, nom_specialite, nom_lieu
 FROM personnage
-JOIN lieu ON nom_lieu = lieu.nom_lieu
+JOIN specialite 
+ON nom_specialite = specialite.nom_specialite
+JOIN lieu
+ON nom_lieu = lieu.nom_lieu
