@@ -4,3 +4,5 @@ SELECT id_lieu, SUM(id_lieu)
 FROM personnage
 GROUP BY id_lieu
 ORDER BY SUM(id_lieu) DESC
+
+[2] Nom des gaulois + spécialité + village
