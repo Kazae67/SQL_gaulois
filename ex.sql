@@ -9,4 +9,4 @@ ORDER BY SUM(id_lieu) DESC
 
 SELECT nom_personnage, nom_lieu
 FROM personnage
-FULL JOIN lieu ON nom_lieu = lieu.nom_lieu
+JOIN lieu ON nom_lieu = lieu.nom_lieu
