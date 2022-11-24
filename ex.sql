@@ -13,3 +13,5 @@ JOIN specialite
 ON nom_specialite = specialite.nom_specialite
 JOIN lieu
 ON nom_lieu = lieu.nom_lieu
+
+
