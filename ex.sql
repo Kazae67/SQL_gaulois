@@ -25,4 +25,8 @@ ON specialite.id_specialite = personnage.id_specialite
 GROUP BY nom_specialite
 ORDER BY COUNT(nom_personnage) DESC
 
+[4]Nom des batailles + lieu de la plus récente à la plus ancienne 
+(dates au format jj/mm/aaaa)
+
+
 
