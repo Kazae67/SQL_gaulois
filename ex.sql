@@ -33,7 +33,7 @@ ON lieu.id_lieu = bataille.id_lieu
 ORDER BY date_bataille DESC
 
 [5]Nom des potions + coût de réalisation de la potion (trié par coût décroissant)
-SELECT nom_potion, cout_ingredient
+SELECT nom_potion, cout_ingredient 
 FROM potion
 JOIN ingredient
 ON potion.id_potion = ingredient.id_ingredient
@@ -41,8 +41,9 @@ JOIN composer
 ON ingredient.id_ingredient = composer.id_potion
 ORDER BY cout_ingredient DESC
 
-[6]Nom des ingrédients + coût + quantité 
-de chaque ingrédient qui composent la potion 'Potion V'
+[6]Nom des ingrédients + coût + quantité
+de chaque ingrédient qui composent la potion 'Potion V' 
+ /* à revoir pour potion V*/
 SELECT nom_ingredient, cout_ingredient, qte
 FROM ingredient
 JOIN composer
