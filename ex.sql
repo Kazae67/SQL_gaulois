@@ -33,3 +33,5 @@ FROM lieu
 JOIN bataille
 ON lieu.id_lieu = bataille.id_lieu
 ORDER BY date_bataille DESC
+
+[5]Nom des potions + coût de réalisation de la potion (trié par coût décroissant)
