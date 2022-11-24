@@ -28,9 +28,8 @@ ORDER BY COUNT(nom_personnage) DESC
 [4]Nom des batailles + lieu de la plus récente à la plus ancienne 
 (dates au format jj/mm/aaaa)
 
-SELECT nom_bataille, nom_lieu, date_bataille
+SELECT nom_bataille, nom_lieu, date_format(date_bataille, "%d/%m/%Y")
 FROM lieu
 JOIN bataille
 ON lieu.id_lieu = bataille.id_lieu
 ORDER BY date_bataille DESC
-
