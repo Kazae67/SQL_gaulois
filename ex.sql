@@ -1,8 +1,10 @@
 [1] Nombre de gaulois par lieu (trié par nombre de gaulois décroissant)
-SELECT id_lieu, SUM(id_lieu) 
-FROM personnage
-GROUP BY id_lieu
-ORDER BY SUM(id_lieu) DESC
+SELECT nom_lieu, count(nom_personnage)
+FROM lieu
+JOIN personnage
+ON lieu.id_lieu = personnage.id_lieu
+GROUP BY nom_lieu
+ORDER BY COUNT(nom_personnage) DESC
 
 [2] Nom des gaulois + spécialité + village
 SELECT nom_personnage, nom_specialite, nom_lieu
