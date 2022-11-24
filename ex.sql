@@ -32,5 +32,5 @@ SELECT nom_bataille, nom_lieu, date_bataille
 FROM lieu
 JOIN bataille
 ON lieu.id_lieu = bataille.id_lieu
-
+ORDER BY date_bataille DESC
 
