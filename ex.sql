@@ -15,3 +15,12 @@ JOIN lieu
 ON nom_lieu = lieu.nom_lieu
 
 
+[3] Nom des spécialités avec nombre de gaulois par spécialité 
+(trié par nombre de gaulois décroissant)
+
+SELECT nom_specialite, count(nom_personnage)
+FROM specialite
+JOIN personnage
+ON specialite.id_specialite = personnage.id_specialite
+GROUP BY nom_specialite
+
