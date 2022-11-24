@@ -1,12 +1,10 @@
 [1] Nombre de gaulois par lieu (trié par nombre de gaulois décroissant)
-
 SELECT id_lieu, SUM(id_lieu) 
 FROM personnage
 GROUP BY id_lieu
 ORDER BY SUM(id_lieu) DESC
 
 [2] Nom des gaulois + spécialité + village
-
 SELECT nom_personnage, nom_specialite, nom_lieu
 FROM personnage
 JOIN specialite 
@@ -17,7 +15,6 @@ ON nom_lieu = lieu.nom_lieu
 
 [3] Nom des spécialités avec nombre de gaulois par spécialité 
 (trié par nombre de gaulois décroissant)
-
 SELECT nom_specialite, count(nom_personnage)
 FROM specialite
 JOIN personnage
@@ -27,7 +24,6 @@ ORDER BY COUNT(nom_personnage) DESC
 
 [4]Nom des batailles + lieu de la plus récente à la plus ancienne 
 (dates au format jj/mm/aaaa)
-
 SELECT nom_bataille, nom_lieu, date_format(date_bataille, "%d/%m/%Y")
 FROM lieu
 JOIN bataille
@@ -43,3 +39,7 @@ ORDER BY cout_ingredient DESC
 
 [6]Nom des ingrédients + coût + quantité 
 de chaque ingrédient qui composent la potion 'Potion V'
+SELECT nom_ingredient, cout_ingredient, qte
+FROM ingredient
+JOIN composer
+ON ingredient.id_ingredient = composer.qte
