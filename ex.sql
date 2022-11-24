@@ -40,3 +40,6 @@ FROM potion
 JOIN ingredient
 ON potion.id_potion = ingredient.id_ingredient
 ORDER BY cout_ingredient DESC
+
+[6]Nom des ingrédients + coût + quantité 
+de chaque ingrédient qui composent la potion 'Potion V'
