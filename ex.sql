@@ -49,3 +49,5 @@ FROM ingredient
 JOIN composer
 ON ingredient.id_ingredient = composer.qte
 WHERE nom_ingredient = 'Miel'
+
+[7]Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Babaorum'
