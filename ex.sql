@@ -50,10 +50,13 @@ JOIN composer
 ON ingredient.id_ingredient = composer.qte
 WHERE nom_ingredient = 'Miel'
 
-[7]Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Babaorum'
-SELECT nom_personnage, qte
+[7]Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Bagarre du siècle'
+SELECT nom_personnage, qte, nom_bataille
 FROM personnage
 JOIN prendre_casque
 ON personnage.id_personnage = prendre_casque.qte
+JOIN bataille
+ON bataille.id_bataille = personnage.id_personnage
+WHERE nom_bataille = 'Bagarre du siècle'
 GROUP BY qte
 ORDER BY qte DESC
