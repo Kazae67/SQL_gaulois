@@ -55,3 +55,5 @@ SELECT nom_personnage, qte
 FROM personnage
 JOIN prendre_casque
 ON personnage.id_personnage = prendre_casque.qte
+GROUP BY qte
+ORDER BY qte DESC
