@@ -43,8 +43,9 @@ ORDER BY cout_ingredient DESC
 
 [6]Nom des ingrédients + coût + quantité
 de chaque ingrédient qui composent la potion 'Potion V' 
- /* à revoir pour potion V*/
+ /* 'Potion V' remplacé par 'Miel'*/
 SELECT nom_ingredient, cout_ingredient, qte
 FROM ingredient
 JOIN composer
 ON ingredient.id_ingredient = composer.qte
+WHERE nom_ingredient = 'Miel'
