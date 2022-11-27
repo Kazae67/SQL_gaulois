@@ -78,3 +78,8 @@ AND bataille.nom_bataille = 'Bagarre du siècle'
 -- GROUP BY qte
 -- ORDER BY qte DESC
 
+[8] Nom des villageois et la quantité de potion bue (en les classant du plus grand buveur au plus petit)
+SELECT nom_personnage, dose_boire
+FROM personnage, boire
+WHERE personnage.id_personnage = boire.id_potion
+ORDER BY boire.dose_boire DESC
