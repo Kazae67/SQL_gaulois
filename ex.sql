@@ -52,7 +52,7 @@ WHERE nom_ingredient = 'Miel'
 
 [7]Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Bagarre du siècle'
 SELECT nom_personnage, nom_bataille, qte
-FROM personnage, prendre_casque, bataille
+FROM personnage, bataille, prendre_casque
 WHERE personnage.id_personnage = prendre_casque.id_personnage
 AND prendre_casque.id_personnage = bataille.id_bataille
 AND bataille.nom_bataille = 'Bagarre du siècle'
