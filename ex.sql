@@ -84,5 +84,11 @@ FROM personnage, boire
 WHERE personnage.id_personnage = boire.id_potion
 ORDER BY boire.dose_boire DESC
 
+[9]Nom de la bataille où le nombre de casques pris a été le plus important
+SELECT DISTINCT nom_bataille, qte
+FROM bataille, prendre_casque, personnage
+WHERE bataille.id_bataille = prendre_casque.id_casque
+AND personnage.id_personnage = prendre_casque.id_casque 
+ORDER BY qte DESC
 
 
