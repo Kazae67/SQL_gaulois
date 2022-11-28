@@ -84,6 +84,16 @@ FROM personnage, boire
 WHERE personnage.id_personnage = boire.id_potion
 ORDER BY boire.dose_boire DESC
 
+SELECT DISTINCT nom_personnage, SUM(dose_boire) AS nb_potion
+FROM personnage, boire
+WHERE personnage.id_personnage = boire.id_potion
+GROUP BY personnage.id_personnage
+HAVING nb_potion >= ALL(
+SELECT SUM(boire.dose_boire)
+)
+
+
+
 [9]Nom de la bataille où le nombre de casques pris a été le plus important
 SELECT nom_bataille, SUM(qte) AS nb_casques
 FROM bataille, prendre_casque
