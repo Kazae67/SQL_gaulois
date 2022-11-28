@@ -42,8 +42,7 @@ ON ingredient.id_ingredient = composer.id_potion
 ORDER BY cout_ingredient DESC
 
 [6]Nom des ingrédients + coût + quantité
-de chaque ingrédient qui composent la potion 'Potion V'
- /* 'Potion V' remplacé par 'Miel'*/
+de chaque ingrédient qui composent la potion 'Miel'
 SELECT nom_ingredient, cout_ingredient, qte
 FROM ingredient
 JOIN composer
@@ -84,15 +83,13 @@ FROM personnage, boire
 WHERE personnage.id_personnage = boire.id_potion
 ORDER BY boire.dose_boire DESC
 
-SELECT DISTINCT nom_personnage, SUM(dose_boire) AS nb_potion
-FROM personnage, boire
-WHERE personnage.id_personnage = boire.id_potion
-GROUP BY personnage.id_personnage
-HAVING nb_potion >= ALL(
-SELECT SUM(boire.dose_boire)
-)
-
-
+-- SELECT DISTINCT nom_personnage, SUM(dose_boire) AS nb_potion
+-- FROM personnage, boire
+-- WHERE personnage.id_personnage = boire.id_potion
+-- GROUP BY personnage.id_personnage
+-- HAVING nb_potion >= ALL(
+-- SELECT SUM(boire.dose_boire)
+-- )
 
 [9]Nom de la bataille où le nombre de casques pris a été le plus important
 SELECT nom_bataille, SUM(qte) AS nb_casques
