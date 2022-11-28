@@ -85,10 +85,17 @@ WHERE personnage.id_personnage = boire.id_potion
 ORDER BY boire.dose_boire DESC
 
 [9]Nom de la bataille où le nombre de casques pris a été le plus important
-SELECT DISTINCT nom_bataille, qte
-FROM bataille, prendre_casque, personnage
-WHERE bataille.id_bataille = prendre_casque.id_casque
-AND personnage.id_personnage = prendre_casque.id_casque 
-ORDER BY qte DESC
+SELECT nom_bataille, SUM(qte) AS nb_casques
+FROM bataille, prendre_casque
+WHERE bataille.id_bataille = prendre_casque.id_bataille
+GROUP BY bataille.id_bataille
+HAVING nb_casques>= ALL(
+SELECT SUM(prendre_casque.qte)
+FROM bataille, prendre_casque
+WHERE bataille.id_bataille = prendre_casque.id_bataille
+GROUP BY bataille.id_bataille
+)
 
+[10]Combien existe-t-il de casques de chaque type et quel est leur coût total ? 
+(classés par nombre décroissant)
 
