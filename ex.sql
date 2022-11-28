@@ -105,4 +105,3 @@ GROUP BY bataille.id_bataille
 
 [10]Combien existe-t-il de casques de chaque type et quel est leur coût total ? 
 (classés par nombre décroissant)
-
