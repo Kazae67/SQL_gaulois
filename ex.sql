@@ -83,3 +83,6 @@ SELECT nom_personnage, dose_boire
 FROM personnage, boire
 WHERE personnage.id_personnage = boire.id_potion
 ORDER BY boire.dose_boire DESC
+
+
+
