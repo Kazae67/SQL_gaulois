@@ -7,12 +7,12 @@ GROUP BY nom_lieu
 ORDER BY COUNT(nom_personnage) DESC
 
 [2] Nom des gaulois + spécialité + village
-SELECT nom_personnage, nom_specialite, nom_lieu
+SELECT DISTINCT nom_personnage, nom_specialite, nom_lieu
 FROM personnage
 JOIN specialite
-ON personnage.id_personnage = specialite.id_specialite
+ON personnage.id_specialite = specialite.id_specialite
 JOIN lieu
-ON nom_lieu = lieu.nom_lieu
+ON personnage.id_lieu = lieu.id_lieu
 
 [3] Nom des spécialités avec nombre de gaulois par spécialité
 (trié par nombre de gaulois décroissant)
@@ -95,7 +95,7 @@ ORDER BY nb_casques DESC
 
 [11]Noms des potions dont un des ingrédients est la cerise
 SELECT nom_potion, nom_ingredient
-FROM potion
+FROM potion 
 INNER JOIN composer
 ON potion.id_potion = composer.id_potion
 INNER JOIN ingredient
