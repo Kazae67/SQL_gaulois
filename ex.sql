@@ -10,10 +10,9 @@ ORDER BY COUNT(nom_personnage) DESC
 SELECT nom_personnage, nom_specialite, nom_lieu
 FROM personnage
 JOIN specialite
-ON nom_specialite = specialite.nom_specialite
+ON personnage.id_personnage = specialite.id_specialite
 JOIN lieu
 ON nom_lieu = lieu.nom_lieu
-
 
 [3] Nom des spécialités avec nombre de gaulois par spécialité
 (trié par nombre de gaulois décroissant)
@@ -43,53 +42,32 @@ ORDER BY cout_ingredient DESC
 
 [6]Nom des ingrédients + coût + quantité
 de chaque ingrédient qui composent la potion 'Miel'
-SELECT nom_ingredient, cout_ingredient, qte
-FROM ingredient
-JOIN composer
-ON ingredient.id_ingredient = composer.qte
-WHERE nom_ingredient = 'Miel'
+SELECT 
+SELECT 
+nom_potion, 
+cout_ingredient AS cout_igredient,
+nom_ingredient AS nb_ingredient,
+qte
+FROM potion
+INNER JOIN composer
+ON composer.id_potion = potion.id_potion
+INNER JOIN ingredient
+ON composer.id_ingredient = ingredient.id_ingredient
+WHERE potion.id_potion = 1
 
 [7]Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Bagarre du siècle'
-SELECT nom_personnage, nom_bataille, qte
+SELECT nom_personnage, nom_bataille, SUM(qte) AS nb_casques
 FROM personnage, bataille, prendre_casque
 WHERE personnage.id_personnage = prendre_casque.id_personnage
 AND prendre_casque.id_personnage = bataille.id_bataille
 AND bataille.nom_bataille = 'Bagarre du siècle'
-
--- SELECT nom_personnage, qte, nom_bataille
--- FROM personnage
--- JOIN prendre_casque
--- ON personnage.id_personnage = prendre_casque.qte
--- JOIN bataille
--- ON bataille.id_bataille = personnage.id_personnage
--- WHERE nom_bataille = 'Bagarre du siècle'
--- GROUP BY qte
--- ORDER BY qte DESC
-
-
--- SELECT nom_personnage, id_personnage, nom_bataille
--- FROM personnage
--- INNER JOIN prendre_casque
--- ON personnage.id_personnage = prendre_casque.id_personnage
--- INNER JOIN bataille
--- ON bataille.id_bataille = prendre_casque.id_bataille
--- WHERE nom_bataille = 'Bagarre du siècle'
--- GROUP BY qte
--- ORDER BY qte DESC
+GROUP BY bataille.nom_bataille
 
 [8] Nom des villageois et la quantité de potion bue (en les classant du plus grand buveur au plus petit)
-SELECT nom_personnage, dose_boire
+SELECT DISTINCT nom_personnage, dose_boire
 FROM personnage, boire
 WHERE personnage.id_personnage = boire.id_potion
 ORDER BY boire.dose_boire DESC
-
--- SELECT DISTINCT nom_personnage, SUM(dose_boire) AS nb_potion
--- FROM personnage, boire
--- WHERE personnage.id_personnage = boire.id_potion
--- GROUP BY personnage.id_personnage
--- HAVING nb_potion >= ALL(
--- SELECT SUM(boire.dose_boire)
--- )
 
 [9]Nom de la bataille où le nombre de casques pris a été le plus important
 SELECT nom_bataille, SUM(qte) AS nb_casques
@@ -105,3 +83,23 @@ GROUP BY bataille.id_bataille
 
 [10]Combien existe-t-il de casques de chaque type et quel est leur coût total ? 
 (classés par nombre décroissant)
+SELECT 
+nom_type_casque AS nom, 
+COUNT(id_casque) AS nb_casques,
+SUM(cout_casque) AS cout_total
+FROM type_casque
+LEFT JOIN casque
+ON type_casque.id_type_casque = casque.id_type_casque
+GROUP BY type_casque.id_type_casque
+ORDER BY nb_casques DESC
+
+[11]Noms des potions dont un des ingrédients est la cerise
+SELECT nom_potion, nom_ingredient
+FROM potion
+INNER JOIN composer
+ON potion.id_potion = composer.id_potion
+INNER JOIN ingredient
+ON composer.id_ingredient = ingredient.id_ingredient
+AND ingredient.nom_ingredient LIKE "%Carotte%"
+
+[12]Nom du / des village(s) possédant le plus d'habitants
