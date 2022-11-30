@@ -123,5 +123,10 @@ ON boire.id_potion = potion.id_potion
 WHERE boire.id_personnage IS NULL
 
 [14]Noms des villages qui contiennent la particule 'um'
+SELECT nom_lieu
+FROM lieu
+WHERE lieu.nom_lieu LIKE '%um%'
+
+[15]Nom du / des villageois qui n'ont pas le droit de boire la potion 'Rajeunissement II'
 
 
