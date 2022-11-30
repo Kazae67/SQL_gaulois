@@ -4,7 +4,7 @@ FROM lieu
 JOIN personnage
 ON lieu.id_lieu = personnage.id_lieu
 GROUP BY nom_lieu
-ORDER BY COUNT(nom_personnage) DESC
+ORDER BY COUNT(nom_personnage) DESC 
 
 [2] Nom des gaulois + spécialité + village
 SELECT DISTINCT nom_personnage, nom_specialite, nom_lieu
@@ -21,7 +21,7 @@ FROM specialite
 JOIN personnage
 ON specialite.id_specialite = personnage.id_specialite
 GROUP BY nom_specialite
-ORDER BY COUNT(nom_personnage) DESC 
+ORDER BY COUNT(nom_personnage) DESC  
 
 [4]Nom des batailles + lieu de la plus récente à la plus ancienne
 (dates au format jj/mm/aaaa)
