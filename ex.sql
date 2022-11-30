@@ -122,3 +122,6 @@ left JOIN potion
 ON boire.id_potion = potion.id_potion
 WHERE boire.id_personnage IS NULL
 
+[14]Noms des villages qui contiennent la particule 'um'
+
+
