@@ -109,3 +109,5 @@ WHERE personnage.id_lieu = lieu.id_lieu
 GROUP BY lieu.id_lieu
 ORDER BY nb_personnage DESC LIMIT 1
 
+[13]Noms des villageois qui nont jamais bu de potion
+
