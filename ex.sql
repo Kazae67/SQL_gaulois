@@ -107,7 +107,14 @@ SELECT nom_lieu, COUNT(id_personnage) AS nb_personnage
 FROM personnage, lieu
 WHERE personnage.id_lieu = lieu.id_lieu
 GROUP BY lieu.id_lieu
-ORDER BY nb_personnage DESC LIMIT 1
-
+HAVING nb_personnage >= ALL(
+SELECT COUNT(id_personnage)
+FROM personnage, lieu
+WHERE personnage.id_lieu = lieu.id_lieu
+GROUP BY lieu.id_lieu
+)
 [13]Noms des villageois qui nont jamais bu de potion
-
+SELECT nom_personnage
+FROM personnage, 
+INNER JOIN potion
+ON 
