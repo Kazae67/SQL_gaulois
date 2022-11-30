@@ -115,6 +115,20 @@ GROUP BY lieu.id_lieu
 )
 [13]Noms des villageois qui nont jamais bu de potion
 SELECT nom_personnage
-FROM personnage, 
+FROM personnage
+INNER JOIN boire
+ON personnage.id_personnage = boire.id_personnage
 INNER JOIN potion
-ON 
+ON boire.id_potion = potion.id_potion
+GROUP BY nom_personnage
+HAVING SUM(boire.dose_boire)=0
+
+SELECT nom_personnage
+FROM personnage
+LEFT JOIN boire
+ON personnage.id_personnage = boire.id_personnage
+LEFT JOIN potion
+ON boire.id_potion = potion.id_potion
+WHERE boire.dose_boire = 0
+GROUP BY nom_personnage
+
