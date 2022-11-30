@@ -128,5 +128,11 @@ FROM lieu
 WHERE lieu.nom_lieu LIKE '%um%'
 
 [15]Nom du / des villageois qui n'ont pas le droit de boire la potion 'Rajeunissement II'
-
+SELECT nom_personnage, dose_boire AS autorisé_boire
+FROM personnage
+LEFT JOIN boire
+ON personnage.id_personnage = boire.id_personnage
+LEFT JOIN autoriser_boire
+ON boire.id_personnage = autoriser_boire.id_personnage
+WHERE boire.id_personnage IS NULL
 
