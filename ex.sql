@@ -102,8 +102,10 @@ INNER JOIN ingredient
 ON composer.id_ingredient = ingredient.id_ingredient
 AND ingredient.nom_ingredient LIKE "%Carotte%"
 
-[12]Nom du / des village(s) possédant le plus d'habitants
+[12]Nom du / des village(s) possédant le plus dhabitants
 SELECT nom_lieu, COUNT(id_personnage) AS nb_personnage
 FROM personnage, lieu
 WHERE personnage.id_lieu = lieu.id_lieu
 GROUP BY lieu.id_lieu
+ORDER BY nb_personnage DESC LIMIT 1
+
