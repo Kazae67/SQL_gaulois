@@ -128,54 +128,6 @@ FROM lieu
 WHERE lieu.nom_lieu LIKE '%um%'
 
 [15]Nom du / des villageois qui nont pas le droit de boire la potion 'Rajeunissement II'
-SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire
-FROM personnage
-left JOIN boire
-ON personnage.id_personnage = boire.id_personnage
-left JOIN autoriser_boire
-ON boire.id_personnage = autoriser_boire.id_personnage
-WHERE boire.id_personnage IS NULL
-
-SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire
-FROM personnage
-left JOIN boire
-ON personnage.id_personnage = boire.id_personnage
-left JOIN autoriser_boire
-ON boire.id_personnage = autoriser_boire.id_personnage
-LEFT JOIN potion
-ON autoriser_boire.id_potion = potion.id_potion
-AND potion.nom_potion LIKE "%Magique%"
-
-SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire, nom_potion
-FROM personnage
-left JOIN boire
-ON personnage.id_personnage = boire.id_personnage
-left JOIN autoriser_boire
-ON boire.id_personnage = autoriser_boire.id_personnage
-LEFT JOIN potion
-ON autoriser_boire.id_potion = potion.id_potion
-WHERE potion.nom_potion LIKE "%Rajeunissement II%"
-
-SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire, nom_potion
-FROM personnage
-left JOIN boire
-ON personnage.id_personnage = boire.id_personnage
-left JOIN autoriser_boire
-ON boire.id_personnage = autoriser_boire.id_personnage
-AND autoriser_boire.id_personnage IS NOT NULL
-LEFT JOIN potion
-ON autoriser_boire.id_potion = potion.id_potion
-WHERE potion.nom_potion LIKE "%Rajeunissement II%"
-
-SELECT DISTINCT nom_personnage, nom_potion
-FROM personnage
-left JOIN autoriser_boire
-ON personnage.id_personnage = autoriser_boire.id_personnage
-LEFT JOIN potion
-ON autoriser_boire.id_potion = potion.id_potion
-WHERE potion.nom_potion = "Magique"
-AND autoriser_boire.id_personnage IS null
-
 SELECT nom_personnage
 from personnage
 where personnage.id_personnage NOT IN (
@@ -184,3 +136,52 @@ where personnage.id_personnage NOT IN (
     WHERE potion.id_potion = autoriser_boire.id_potion
     AND potion.nom_potion = "Magique"
 )
+
+-- SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire
+-- FROM personnage
+-- left JOIN boire
+-- ON personnage.id_personnage = boire.id_personnage
+-- left JOIN autoriser_boire
+-- ON boire.id_personnage = autoriser_boire.id_personnage
+-- WHERE boire.id_personnage IS NULL
+
+-- SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire
+-- FROM personnage
+-- left JOIN boire
+-- ON personnage.id_personnage = boire.id_personnage
+-- left JOIN autoriser_boire
+-- ON boire.id_personnage = autoriser_boire.id_personnage
+-- LEFT JOIN potion
+-- ON autoriser_boire.id_potion = potion.id_potion
+-- AND potion.nom_potion LIKE "%Magique%"
+
+-- SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire, nom_potion
+-- FROM personnage
+-- left JOIN boire
+-- ON personnage.id_personnage = boire.id_personnage
+-- left JOIN autoriser_boire
+-- ON boire.id_personnage = autoriser_boire.id_personnage
+-- LEFT JOIN potion
+-- ON autoriser_boire.id_potion = potion.id_potion
+-- WHERE potion.nom_potion LIKE "%Rajeunissement II%"
+
+-- SELECT DISTINCT nom_personnage, dose_boire AS autorisé_boire, nom_potion
+-- FROM personnage
+-- left JOIN boire
+-- ON personnage.id_personnage = boire.id_personnage
+-- left JOIN autoriser_boire
+-- ON boire.id_personnage = autoriser_boire.id_personnage
+-- AND autoriser_boire.id_personnage IS NOT NULL
+-- LEFT JOIN potion
+-- ON autoriser_boire.id_potion = potion.id_potion
+-- WHERE potion.nom_potion LIKE "%Rajeunissement II%"
+
+-- SELECT DISTINCT nom_personnage, nom_potion
+-- FROM personnage
+-- left JOIN autoriser_boire
+-- ON personnage.id_personnage = autoriser_boire.id_personnage
+-- LEFT JOIN potion
+-- ON autoriser_boire.id_potion = potion.id_potion
+-- WHERE potion.nom_potion = "Magique"
+-- AND autoriser_boire.id_personnage IS null
+
