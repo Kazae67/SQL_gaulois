@@ -100,7 +100,7 @@ INNER JOIN composer
 ON potion.id_potion = composer.id_potion
 INNER JOIN ingredient
 ON composer.id_ingredient = ingredient.id_ingredient
-AND ingredient.nom_ingredient LIKE "%Carotte%"
+AND ingredient.nom_ingredient LIKE "%Carotte%" 
 
 [12]Nom du / des village(s) possédant le plus dhabitants
 SELECT nom_lieu, COUNT(id_personnage) AS nb_personnage
